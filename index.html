@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- <link rel="icon" href="./ks-portfolio/src/assets/favicon.ico" type="image/x-icon"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Khyruzzaman</title>
+    <link rel="icon" href="data:,">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+
+    <script>
+      // Function to dynamically create and set a favicon with text
+      function setFaviconText(text) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64; // Larger canvas for better resolution
+        canvas.height = 64;
+        const ctx = canvas.getContext('2d');
+
+        // Draw a background
+        ctx.fillStyle = '#0A3D2A'; // Blue background
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Draw the text
+        ctx.fillStyle = '#A9B7A0'; // White text
+        ctx.font = 'bold 40px Arial';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(text, canvas.width / 2, canvas.height / 2);
+
+        // Convert canvas to a data URL and set it as the favicon
+        const link = document.querySelector('link[rel="icon"]') || document.createElement('link');
+        link.rel = 'icon';
+        link.href = canvas.toDataURL();
+        document.head.appendChild(link);
+      }
+
+      // Set the initial favicon text
+      setFaviconText('K.');
+
+      // Example: Update favicon text dynamically
+      // You can tie this function to an event or logic to update the favicon text
+      // setTimeout(() => {
+      //   setFaviconText('OK');
+      // }, 3000);
+    </script>
+  </body>
+</html>
+
